@@ -1,0 +1,110 @@
+﻿<Page x:Class="GestaoAvaliacoes.Views.AlunosPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestaoAvaliacoes.Views"
+      xmlns:vm="clr-namespace:GestaoAvaliacoes.ViewModels"
+      xmlns:converters="clr-namespace:GestaoAvaliacoes.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AlunosPage" Background="Transparent">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="White"
+                Width="700"
+                Height="405"
+                CornerRadius="8"
+                Padding="40"
+                BorderBrush="#DCE1DA"
+                BorderThickness="1"
+                Margin="0,20,0,24">
+            <Border.Effect>
+                <DropShadowEffect Color="#999999"
+                                  Direction="270"
+                                  ShadowDepth="4"
+                                  BlurRadius="10"
+                                  Opacity="0.3"/>
+            </Border.Effect>
+
+            <StackPanel Margin="0,-10,0,-35">
+                <!-- Título -->
+                <TextBlock Text="Lista de Alunos" 
+                           FontSize="26" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,20" 
+                           Foreground="{DynamicResource Titulos}" 
+                           HorizontalAlignment="Center"/>
+
+                <!-- Pesquisa e Botão -->
+                <DockPanel Margin="0,0,0,20" LastChildFill="False" HorizontalAlignment="Center">
+                    <Border BorderBrush="{DynamicResource SecundaryColor}" BorderThickness="1" CornerRadius="5" Padding="8" Width="240" Height="36" VerticalAlignment="Center" DockPanel.Dock="Left">
+                        <Grid>
+                            <TextBlock x:Name="PlaceholderText" Foreground="Gray" Margin="24,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                            <DockPanel>
+                                <Path Data="{StaticResource Pesquisa}" Width="16" Height="16" Fill="Gray" Margin="0,0,8,0" Stretch="Fill" VerticalAlignment="Center"/>
+                                <TextBox x:Name="SearchBox" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="14" TextChanged="SearchBox_TextChanged"/>
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+
+                    <Button Content="Carregar Lista" Width="150" Height="36" Margin="10,0,0,0"
+                            Style="{StaticResource BotoesVerdes}" FontWeight="Bold"
+                            VerticalAlignment="Center" DockPanel.Dock="Left"
+                            Click="CarregarLista_Click"/>
+                </DockPanel>
+
+                <!-- DataGrid -->
+                <DataGrid x:Name="dgAlunos"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          HeadersVisibility="Column"
+                          GridLinesVisibility="None"
+                          BorderThickness="1"
+                          BorderBrush="#DCE1DA"
+                          Background="Transparent"
+                          RowBackground="White"
+                          AlternatingRowBackground="#FFF9F9F9"
+                          IsReadOnly="True"
+                          FontSize="14"
+                          MaxHeight="150"
+                          Loaded="dgAlunos_Loaded"> 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*" FontSize="14"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" FontSize="14"/>
+                        <DataGridTextColumn Header="Número" Binding="{Binding Numero}" Width="Auto" FontSize="14"/>
+                        <DataGridTemplateColumn Header="Ações" Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Editar" Style="{StaticResource BotoesVerdes}"
+                                                Padding="6,2" Margin="0,0,6,0" FontWeight="Bold"
+                                                Click="EditarAluno_Click"/>
+                                        <Button Width="30" Height="30" Background="#E57373" ToolTip="Eliminar"
+                                                Click="EliminarAluno_Click">
+                                            <Path Data="{StaticResource Eliminar}" Fill="White" Stretch="Uniform"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Botão Adicionar -->
+                <Button Content="Adicionar Aluno" Margin="0,20,0,0" Width="175" Height="35"
+                        HorizontalAlignment="Center" Style="{StaticResource BotoesVerdes}"
+                        FontWeight="Bold" Click="AddAluno_Click"/>
+                <TextBlock x:Name="txtAviso" Text="" 
+                        Foreground="#4F1716" 
+                        FontWeight="SemiBold"
+                        FontSize="12" 
+                        Margin="0,10,0,0" 
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap" Width="450" TextAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
+</Page>

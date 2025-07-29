@@ -1,0 +1,96 @@
+﻿<Window x:Class="GestaoAvaliacoes.Views.EditListaAlunos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestaoAvaliacoes.Views"
+        mc:Ignorable="d"
+         Title="Editar Alunos do Grupo" Height="300" Width="350"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+    <Border CornerRadius="10" BorderBrush="{DynamicResource TertiaryColor}" BorderThickness="2">
+        <Border.Background>
+            <ImageBrush ImageSource="/Assets/gradientsoft.png" Stretch="UniformToFill"/>
+        </Border.Background>
+
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Cabeçalhos -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Disponíveis" Grid.Column="0" FontWeight="Bold"
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Grupo" Grid.Column="1" FontWeight="Bold"
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+            </Grid>
+
+            <!-- Listas de alunos -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                
+                <!-- StackPanel com campo de pesquisa e listbox -->
+                <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                    <!-- Pesquisa de Alunos Disponíveis -->
+                    <DockPanel Margin="0,0,0,5" LastChildFill="True" HorizontalAlignment="Left">
+                        <Border BorderBrush="{DynamicResource SecundaryColor}" BorderThickness="1" CornerRadius="4" Padding="4" Width="130" Height="28" VerticalAlignment="Center">
+                            <Grid>
+                                <DockPanel>
+                                    <Path Data="{StaticResource Pesquisa}" Width="12" Height="12" Fill="Gray" Margin="0,0,6,0" Stretch="Fill" VerticalAlignment="Center"/>
+                                    <TextBox x:Name="SearchBoxDisponiveis" 
+                                             Background="Transparent" 
+                                             BorderThickness="0" 
+                                             VerticalAlignment="Center" 
+                                             FontSize="12" 
+                                             Foreground="Black"
+                                             TextChanged="SearchBoxDisponiveis_TextChanged"
+                                             Width="140"
+                                             ToolTip="Pesquisar aluno..."/> 
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+
+                    <!-- Lista de alunos disponíveis -->
+                    <ListBox x:Name="lstDisponiveis"
+                            Height="141"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                            DisplayMemberPath="Nome"
+                            SelectionMode="Extended"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <Button Content="→" Width="35" Height="35" Margin="0,5" Click="MoverParaGrupo_Click"
+                            Style="{StaticResource BotoesVerdes}"/>
+                    <Button Content="←" Width="35" Height="35" Margin="0,5" Click="RemoverDoGrupo_Click"
+                            Style="{StaticResource BotoesVerdes}"/>
+                </StackPanel>
+
+                <ListBox x:Name="lstGrupo" Grid.Column="2" Margin="5,0,0,0" Height="160"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         DisplayMemberPath="Nome" SelectionMode="Extended"/>
+            </Grid>
+
+            <!-- Botões de ação -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="Cancelar" Width="100" Margin="0,0,10,0" Click="Cancelar_Click"
+                        Style="{StaticResource BotoesVerdes}" FontWeight="SemiBold"/>
+                <Button Content="Confirmar" Width="100" Click="Confirmar_Click"
+                        Style="{StaticResource BotoesVerdes}" FontWeight="SemiBold"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,90 @@
+﻿<Window x:Class="GestaoAvaliacoes.Views.AddTarefa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestaoAvaliacoes.Views"
+        mc:Ignorable="d"
+        Title="Adicionar Tarefa" Height="420" Width="370"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent" Loaded="Window_Loaded"> 
+
+    <Border CornerRadius="10" BorderBrush="{DynamicResource TertiaryColor}" BorderThickness="2">
+        <Border.Background>
+            <ImageBrush ImageSource="/Assets/gradientsoft.png" Stretch="UniformToFill"/>
+        </Border.Background>
+
+        <Grid Margin="40,25,40,11">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- ID -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                <TextBlock Text="ID" FontWeight="Bold" 
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtID" Margin="0,5,0,0" Width="250"
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         Text="{Binding TarefaID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!-- Nome -->
+            <StackPanel Grid.Row="1" Margin="0,0,0,10">
+                <TextBlock Text="Titulo da Tarefa:" FontWeight="Bold" 
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtTitulo" Margin="0,5,0,0" Width="250"
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         Text="{Binding TarefaTitulo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!-- Descrição -->
+            <StackPanel Grid.Row="2" Margin="0,0,0,10">
+                <TextBlock Text="Descrição:" FontWeight="Bold" 
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtDescricao" Margin="0,5,0,0" Width="250"
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         Text="{Binding Descricao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!-- Peso -->
+            <StackPanel Grid.Row="3" Margin="0,0,0,10">
+                <TextBlock Text="Peso (%):" FontWeight="Bold" 
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <TextBox x:Name="txtPeso" Margin="0,5,0,0" Width="250"
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         Text="{Binding Peso, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!-- Datas -->
+            <StackPanel Grid.Row="5" Margin="0,0,0,10">
+                <TextBlock Text="Data de Início:" FontWeight="Bold"
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <DatePicker x:Name="dtpDataInicio" Width="250" SelectedDate="{Binding DataInicio, Mode=TwoWay}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Margin="0,0,0,10">
+                <TextBlock Text="Data de Fim:" FontWeight="Bold"
+                           Foreground="{DynamicResource QuinaryColor}" HorizontalAlignment="Center"/>
+                <DatePicker x:Name="dtpDataFim" Width="250" SelectedDate="{Binding DataFim, Mode=TwoWay}" />
+            </StackPanel>
+
+            <!-- Erro -->
+            <TextBlock x:Name="txtErro" Grid.Row="7" Foreground="Red" FontSize="9" Margin="0,4,0,10" HorizontalAlignment="Center" Width="286"/>
+            <!-- Botões -->
+            <StackPanel Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Cancelar" Width="100" Margin="0,0,10,0" Click="Cancelar_Click"
+                        Style="{StaticResource BotoesVerdes}" FontWeight="SemiBold"/>
+                <Button Content="Confirmar" Width="100" Click="Confirmar_Click"
+                        Style="{StaticResource BotoesVerdes}" FontWeight="SemiBold"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

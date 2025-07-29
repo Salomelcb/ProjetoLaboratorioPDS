@@ -1,0 +1,60 @@
+﻿<Window x:Class="GestaoAvaliacoes.Views.PagCarregamento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AvaliaEdu Splash"
+        Width="420" Height="300"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Loaded="Window_Loaded">
+
+    <Border CornerRadius="12"
+            BorderBrush="{DynamicResource TertiaryColor}"
+            BorderThickness="1"
+            SnapsToDevicePixels="True">
+        <Border.Background>
+            <!-- Fundo -->
+            <ImageBrush ImageSource="/Assets/gradientef.png" Stretch="UniformToFill"/>
+        </Border.Background>
+
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              Direction="270"
+                              ShadowDepth="5"
+                              BlurRadius="12"
+                              Opacity="0.3"/>
+        </Border.Effect>
+
+        <Grid>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30">
+                <!-- Logo Icon -->
+                <Border Width="40" Height="40" Background="#77866B" CornerRadius="5" HorizontalAlignment="Center" Margin="0,0,0,6">
+                    <Viewbox Width="24" Height="24" Stretch="Uniform">
+                        <Path Data="{StaticResource logoAvaliaEdu}" Fill="White" Stretch="Fill"/>
+                    </Viewbox>
+                </Border>
+
+                <!-- -->
+                <TextBlock Text="AvaliaEdu"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           Foreground="#77866B"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,4" />
+
+                <!-- Barra de progresso -->
+                <Border Width="160" Height="8" Background="White" CornerRadius="4" Margin="0,10,0,0">
+                    <ProgressBar x:Name="progressBar"
+                                 Height="8"
+                                 IsIndeterminate="True"
+                                 Foreground="#77866B"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Style="{x:Null}"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

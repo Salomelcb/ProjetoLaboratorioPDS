@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Barra lateral  ─ verde-acinzentado -->
+    <SolidColorBrush x:Key="SideBarColor"        Color="#6b7b6b"/>
+
+    <!-- Degradê que cobre o wallpaper -->
+    <LinearGradientBrush x:Key="BackgroundGradient"
+                         StartPoint="0,0" EndPoint="1,1" Opacity="0.80">
+        <GradientStop Color="#FFFDFCEB" Offset="0"/>
+        <!-- creme claro -->
+        <GradientStop Color="#FFE0F5E7" Offset="1"/>
+        <!-- verde pálido -->
+    </LinearGradientBrush>
+
+    <!-- Texto e ícones (opcional) -->
+    <SolidColorBrush x:Key="PrimaryColor"    Color="#ffffff"/>
+    <SolidColorBrush x:Key="SecundaryColor"  Color="#77866b"/>
+    <SolidColorBrush x:Key="TertiaryColor"  Color="#D8EAD3"/>
+    <SolidColorBrush x:Key="QuaternaryColor" Color="#B2CD9C"/>
+    <SolidColorBrush x:Key="QuinaryColor"   Color="#606b57"/>
+    <SolidColorBrush x:Key="BtnColor" Color="#5A6D5D"/>
+    <SolidColorBrush x:Key="Titulos" Color="#4C5C4C"/>
+    <SolidColorBrush x:Key="SenaryColor" Color="#FAF5EE"/>
+    <SolidColorBrush x:Key="Teste2" Color="DeepPink"/>
+    <SolidColorBrush x:Key="Preto" Color="Black"/>
+
+    <!-- Desligar -->
+    <SolidColorBrush x:Key="btnClose" Color="#6f8964"/>
+
+    <!-- Cores Scroll-->
+    <SolidColorBrush x:Key="ScrollBaseColor" Color="#E4F5E9"/>
+    <SolidColorBrush x:Key="ScrollHoverColor" Color="#CDEFD9"/>
+    <SolidColorBrush x:Key="ScrollArrowColor" Color="#A3D9BA"/>
+
+</ResourceDictionary>
